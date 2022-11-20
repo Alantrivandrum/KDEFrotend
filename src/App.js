@@ -289,11 +289,13 @@ class App extends Component {
     };
   }
 
-  async componentDidMount() {
-    var query = query_dict["query_10"];
-    //console.log(query);
-    // const response =  await axios.get(`http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`);
-    // console.log(response.data);
+  componentDidMount() {
+   
+  }
+
+  
+  getdata(queryNumber){
+  var query = query_dict["query_"+queryNumber];
     
     let data = {
       method: 'GET' ,
@@ -305,30 +307,12 @@ class App extends Component {
     let url = `http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`;
     fetch(url)
     .then((response) => response.text())
-    .then((data) => console.log(data));
+    .then((data) => {return data});
 
-   
   }
-      
+  
 
-//   componentDidMount(){
-//     repository.registerParser(new SparqlXmlResultParser());
 
-// const payload = new GetQueryPayload()
-//   .setQuery('select * where {?s ?p ?o}')
-//   .setQueryType(QueryType.SELECT)
-//   .setResponseType(RDFMimeType.SPARQL_RESULTS_XML)
-//   .setLimit(100);
-
-// return repository.query(payload).then((stream) => {
-//   stream.on('data', (bindings) => {
-//     // the bindings stream converted to data objects with the registered parser
-//   });
-//   stream.on('end', () => {
-//     // handle end of the stream
-//   });
-// });
-//   }
 
   render() {
     const openInNewTab = url => {
