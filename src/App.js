@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
+import { json } from "react-router";
+import axios from "axios";
 
 // const {ServerClient, ServerClientConfig} = require('graphdb').server;
 // const {RDFMimeType} = require('graphdb').http;
@@ -287,33 +289,27 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    const url = `http://localhost:7200/repositories/Test`;
-    let settings = {
-      headers: { Accept: "application/sparql-results+json",  },
-      data: {
-        query: `prefix sch:<http://schema.org/>
-      prefix reso:<http://www.dbpedia.org/resource/>
-      select (count(?attr) as ?attrCount) ?accomCount
-      where {
-          ?attr a sch:TouristAttraction .
-          ?attr reso:county ?attrCounty.
-          {
-              select (count(?accom) as ?accomCount)
-              where {
-                  ?accom a sch:Accommodation .
-                  ?accom reso:county ?accomCounty.
-                  filter(strstarts(?accomCounty,"Cork")).
-              }
-          }
-          filter(strstarts(?attrCounty,"Cork"))
-      } group by ?accomCount`
-      }
+  async componentDidMount() {
+    var query = query_dict["query_10"];
+    //console.log(query);
+    // const response =  await axios.get(`http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`);
+    // console.log(response.data);
+    
+    let data = {
+      method: 'GET' ,
+      mode: 'no-cors',
+      cache: 'default',
+      headers: { Accept: "application/sparql-results+json", }
     };
-    fetch(url, settings)
-      .then((response) => response.json())
-      .then((json) => this.setState({ kde_query_results: json }));
+
+    let url = `http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`;
+    fetch(url)
+    .then((response) => response.text())
+    .then((data) => console.log(data));
+
+   
   }
+      
 
 //   componentDidMount(){
 //     repository.registerParser(new SparqlXmlResultParser());
