@@ -13,6 +13,11 @@
   }
 }
 
+textarea {
+  margin: 50px;
+  width: 750px;
+  height: 250px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

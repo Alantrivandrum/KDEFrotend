@@ -348,38 +348,43 @@ class App extends Component {
 
     return (
       <div>
+      <div>
         <h1> Knowledge Graph</h1>
         <span>{this.state.kde_query_results}</span>
-        <button onClick={() => openInNewTab('/query1')}>
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[1]}>
           Query1
         </button>
-        <button onClick={() => openInNewTab('/query2')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[2]} >
           Query2
         </button>
-        <button onClick={() => openInNewTab('/query3')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[3]} >
           Query3
         </button>
-        <button onClick={() => openInNewTab('/query4')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[4]} >
           Query4
         </button>
-        <button onClick={() => openInNewTab('/query5')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[5]} >
           Query5
         </button>
-        <button onClick={() => openInNewTab('/query6')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[6]} >
           Query6
         </button>
-        <button onClick={() => openInNewTab('/query7')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[7]} >
           Query7
         </button>
-        <button onClick={() => openInNewTab('/query8')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[8]} >
           Query8
         </button>
-        <button onClick={() => openInNewTab('/query9')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[9]} >
           Query9
         </button>
-        <button onClick={() => openInNewTab('/query10')} >
+        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[10]} >
           Query10
         </button>
+      </div>
+      <div>
+        <textarea id="q1id"></textarea>
+      </div>
       </div>
     );
   }
