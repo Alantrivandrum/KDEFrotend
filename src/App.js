@@ -353,7 +353,7 @@ class App extends Component {
     return (
       <div>
       <div>
-        <h1> Knowledge Graph</h1>
+        <h1> Knowledge & Data Engineering Group L </h1>
         <span>{this.state.kde_query_results}</span>
         <button onClick={() => this.changeTextAreas(1)}>
           Query1
