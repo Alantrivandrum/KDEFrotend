@@ -320,7 +320,11 @@ class App extends Component {
     console.log(this.state.kde_query_results)
    
   }
-      
+    
+ changeTextAreas(number){
+  document.getElementById("q1id").value = this.state.kde_query_results[number];
+  document.getElementById("q2id").value = query_dict[`query_${number}`];
+ }
 
 //   componentDidMount(){
 //     repository.registerParser(new SparqlXmlResultParser());
@@ -351,39 +355,42 @@ class App extends Component {
       <div>
         <h1> Knowledge Graph</h1>
         <span>{this.state.kde_query_results}</span>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[1]}>
+        <button onClick={() => this.changeTextAreas(1)}>
           Query1
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[2]} >
+        <button onClick={() => this.changeTextAreas(2)} >
           Query2
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[3]} >
+        <button onClick={() => this.changeTextAreas(3)} >
           Query3
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[4]} >
+        <button onClick={() => this.changeTextAreas(4)} >
           Query4
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[5]} >
+        <button onClick={() => this.changeTextAreas(5)} >
           Query5
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[6]} >
+        <button onClick={() => this.changeTextAreas(6)} >
           Query6
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[7]} >
+        <button onClick={() => this.changeTextAreas(7)} >
           Query7
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[8]} >
+        <button onClick={() => this.changeTextAreas(8)} >
           Query8
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[9]} >
+        <button onClick={() => this.changeTextAreas(9)} >
           Query9
         </button>
-        <button onClick={() => document.getElementById("q1id").value = this.state.kde_query_results[10]} >
+        <button onClick={() => this.changeTextAreas(10)} >
           Query10
         </button>
       </div>
       <div>
         <textarea id="q1id"></textarea>
+      </div>
+      <div>
+        <textarea id="q2id"></textarea>
       </div>
       </div>
     );
