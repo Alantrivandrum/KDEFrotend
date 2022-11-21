@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import getdata from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -52,7 +51,6 @@ root.render(
 
 
 function Query1() {
-  let data = getdata(2);
   return (
     <div>
       <h2>Query1</h2>

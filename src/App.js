@@ -289,13 +289,11 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-   
-  }
-
-  
-  getdata(queryNumber){
-  var query = query_dict["query_"+queryNumber];
+  async componentDidMount() {
+    var query = query_dict["query_5"];
+    //console.log(query);
+    // const response =  await axios.get(`http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`);
+    // console.log(response.data);
     
     let data = {
       method: 'GET' ,
@@ -304,15 +302,44 @@ class App extends Component {
       headers: { Accept: "application/sparql-results+json", }
     };
 
-    let url = `http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`;
-    fetch(url)
-    .then((response) => response.text())
-    .then((data) => {return data});
+    // let url = `http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`;
+    // fetch(url)
+    // .then((response) => response.text())
+    // .then((data) => console.log(data));
 
+    for(let i=1; i<=10; i++){
+      query = query_dict[`query_${i}`];
+      let url = `http://localhost:7200/repositories/KDE?query=${encodeURIComponent(query)}`;
+      await fetch(url)
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+        this.state.kde_query_results[i]=data;
+      });
+    }
+    console.log(this.state.kde_query_results)
+   
   }
-  
+      
 
+//   componentDidMount(){
+//     repository.registerParser(new SparqlXmlResultParser());
 
+// const payload = new GetQueryPayload()
+//   .setQuery('select * where {?s ?p ?o}')
+//   .setQueryType(QueryType.SELECT)
+//   .setResponseType(RDFMimeType.SPARQL_RESULTS_XML)
+//   .setLimit(100);
+
+// return repository.query(payload).then((stream) => {
+//   stream.on('data', (bindings) => {
+//     // the bindings stream converted to data objects with the registered parser
+//   });
+//   stream.on('end', () => {
+//     // handle end of the stream
+//   });
+// });
+//   }
 
   render() {
     const openInNewTab = url => {
