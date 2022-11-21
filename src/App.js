@@ -29,6 +29,18 @@ import axios from "axios";
 //     .setWriteTimeout(writeTimeout);
 // //const repository = new RDFRepositoryClient(config);
 
+let questions_dict = {
+  q1: "How many bins are within a 1 km radius of each accommodation?",
+  q2: "How many houses does each bin serve within a radius of 100 m (i.e. how many houses are within a 0.1 km radius of each bin)?",
+  q3: "What is the address of the most expensive property that has bins within a 1 km radius? What is the price of this property and how many bins are contained within this 1 km region?",
+  q4: "How many accommodations and attractions are within Cork?",
+  q5: "Which attraction has the highest amount of litter fines within a 100 m (0.1 km) radius? What is the website and the phone number of this attraction?",
+  q6: "How many litter fines are there within a 100 m (0.1 km) radius of each bin (excluding bins that have zero litter fines)?",
+  q7: "What is the address and the price of the most expensive residential property within 100 m (0.1 km) of each attraction?",
+  q8: "Do accommodations in a 100m radius of attractions have websites ? ",
+  q9: "How many bins and littering fines are there in the Dublin urban area?",
+  q10: "How many attractions and accommodations are there in each county (listed in descending order based on number of attractions) ?",
+}
 let query_dict = {
   query_1: `prefix ont:<http://www.semanticweb.org/stephen/ontologies/2022/10/GroupL_V2#>
   prefix pos:<http://www.w3.org/2003/01/geo/wgs84_pos#>
@@ -324,6 +336,7 @@ class App extends Component {
  changeTextAreas(number){
   document.getElementById("q1id").value = this.state.kde_query_results[number];
   document.getElementById("q2id").value = query_dict[`query_${number}`];
+  document.getElementById("aid").textContent = questions_dict[`q${number}`];
  }
 
 //   componentDidMount(){
@@ -387,10 +400,12 @@ class App extends Component {
         </button>
       </div>
       <div>
-        <textarea id="q1id"></textarea>
+        <h6 id="aid"> </h6>
+        <textarea id="q2id"></textarea>
       </div>
       <div>
-        <textarea id="q2id"></textarea>
+        <h6 id="aid2">Results</h6>
+        <textarea id="q1id"></textarea>
       </div>
       </div>
     );
